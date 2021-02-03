@@ -10,12 +10,18 @@ class LogButton extends Component {
   };
 
   handleMenu = event => {
-    console.log(event);
     this.setState({ anchorEl: event.currentTarget });
   };
 
   handleClose = () => {
     this.setState({ anchorEl: null });
+  };
+
+  handleClick = () => {
+    this.props.onChangeOpenCreateGroupButton(
+      !this.props.isOpenCreateGroupButton
+    );
+    this.handleClose();
   };
 
   render() {
@@ -24,7 +30,8 @@ class LogButton extends Component {
       marginRight: '0',
     };
 
-    const open = Boolean(this.state.anchorEl);
+    const openMenu = Boolean(this.state.anchorEl);
+    const openCreateGroupButton = this.props.isOpenCreateGroupButton;
 
     return (
       <div style={style}>
@@ -35,10 +42,12 @@ class LogButton extends Component {
           id="menu-appbar"
           anchorEl={this.state.anchorEl}
           keepMounted
-          open={open}
+          open={openMenu}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>Sign in</MenuItem>
+          <MenuItem onClick={this.handleClick}>
+            Sign {!openCreateGroupButton ? 'in' : 'out'}
+          </MenuItem>
         </Menu>
       </div>
     );
