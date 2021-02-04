@@ -5,12 +5,12 @@ import GroupIcon from '@material-ui/icons/Group';
 
 function GroupsListItem() {
   return (
-    <ListItem>
-      <ListItemIcon>
-        <GroupIcon />
-      </ListItemIcon>
-      <ListItemText primary="Group" />
-    </ListItem>
+      <ListItem>
+        <ListItemIcon>
+          <GroupIcon/>
+        </ListItemIcon>
+        <ListItemText primary="Group"/>
+      </ListItem>
   );
 }
 

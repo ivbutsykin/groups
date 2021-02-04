@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import {Component} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import LogButton from './LogButton/LogButton';
@@ -10,22 +10,22 @@ class ActionBar extends Component {
   };
 
   handleChangeOpenCreateGroupButton = value => {
-    this.setState({ isOpenCreateGroupButton: value });
+    this.setState({isOpenCreateGroupButton: value});
   };
 
   render() {
     return (
-      <AppBar position="static">
-        <Toolbar>
-          <CreateGroupButton open={this.state.isOpenCreateGroupButton} />
-          <LogButton
-            isOpenCreateGroupButton={this.state.isOpenCreateGroupButton}
-            onChangeOpenCreateGroupButton={
-              this.handleChangeOpenCreateGroupButton
-            }
-          />
-        </Toolbar>
-      </AppBar>
+        <AppBar position="static">
+          <Toolbar>
+            <CreateGroupButton open={this.state.isOpenCreateGroupButton}/>
+            <LogButton
+                isOpenCreateGroupButton={this.state.isOpenCreateGroupButton}
+                onChangeOpenCreateGroupButton={
+                  this.handleChangeOpenCreateGroupButton
+                }
+            />
+          </Toolbar>
+        </AppBar>
     );
   }
 }

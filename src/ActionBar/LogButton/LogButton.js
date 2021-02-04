@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import {Component} from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
@@ -10,16 +10,16 @@ class LogButton extends Component {
   };
 
   handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
+    this.setState({anchorEl: event.currentTarget});
   };
 
   handleClose = () => {
-    this.setState({ anchorEl: null });
+    this.setState({anchorEl: null});
   };
 
   handleClick = () => {
     this.props.onChangeOpenCreateGroupButton(
-      !this.props.isOpenCreateGroupButton
+        !this.props.isOpenCreateGroupButton,
     );
     this.handleClose();
   };
@@ -34,22 +34,22 @@ class LogButton extends Component {
     const openCreateGroupButton = this.props.isOpenCreateGroupButton;
 
     return (
-      <div style={style}>
-        <IconButton color="inherit" onClick={this.handleMenu}>
-          <AccountCircle />
-        </IconButton>
-        <Menu
-          id="menu-appbar"
-          anchorEl={this.state.anchorEl}
-          keepMounted
-          open={openMenu}
-          onClose={this.handleClose}
-        >
-          <MenuItem onClick={this.handleClick}>
-            Sign {!openCreateGroupButton ? 'in' : 'out'}
-          </MenuItem>
-        </Menu>
-      </div>
+        <div style={style}>
+          <IconButton color="inherit" onClick={this.handleMenu}>
+            <AccountCircle/>
+          </IconButton>
+          <Menu
+              id="menu-appbar"
+              anchorEl={this.state.anchorEl}
+              keepMounted
+              open={openMenu}
+              onClose={this.handleClose}
+          >
+            <MenuItem onClick={this.handleClick}>
+              Sign {!openCreateGroupButton ? 'in' : 'out'}
+            </MenuItem>
+          </Menu>
+        </div>
     );
   }
 }

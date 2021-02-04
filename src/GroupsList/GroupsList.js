@@ -1,10 +1,10 @@
-import { Component } from 'react';
+import {Component} from 'react';
 import List from '@material-ui/core/List';
 import GroupsListItem from './GroupsListItem/GroupsListItem';
 
 class GroupsList extends Component {
   generate() {
-    return <GroupsListItem />;
+    return <GroupsListItem/>;
   }
 
   render() {

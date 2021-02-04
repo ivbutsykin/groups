@@ -3,11 +3,11 @@ import GroupAddIcon from '@material-ui/icons/GroupAdd';
 
 function CreateGroupButton(props) {
   return (
-    props.open && (
-      <IconButton color="inherit">
-        <GroupAddIcon />
-      </IconButton>
-    )
+      props.open && (
+          <IconButton color="inherit">
+            <GroupAddIcon/>
+          </IconButton>
+      )
   );
 }
 

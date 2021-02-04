@@ -4,10 +4,10 @@ import ActionBar from './ActionBar/ActionBar';
 
 function App() {
   return (
-    <Container maxWidth="sm">
-      <ActionBar />
-      <GroupsList />
-    </Container>
+      <Container maxWidth="sm">
+        <ActionBar/>
+        <GroupsList/>
+      </Container>
   );
 }
 
