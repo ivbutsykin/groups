@@ -1,25 +1,17 @@
 import {Component} from 'react';
 import List from '@material-ui/core/List';
 import GroupsListItem from './GroupsListItem/GroupsListItem';
-import {getGroupsList} from '../api/groups.service';
+import {getData} from '../redux/actions';
+
+import {connect} from 'react-redux';
 
 class GroupsList extends Component {
-  state = {
-    groups: [],
-  };
-
   componentDidMount() {
-    this.handleGetGroupList();
+    this.props.getData();
   }
 
-  handleGetGroupList = async () => {
-    const response = await getGroupsList();
-    const groups = await response.json();
-    this.setState({groups: groups});
-  };
-
   generate() {
-    return this.state.groups.map(group => (
+    return this.props.groups.map(group => (
         <GroupsListItem key={group.id} name={group.name}/>
     ));
   }
@@ -29,4 +21,10 @@ class GroupsList extends Component {
   }
 }
 
-export default GroupsList;
+function mapStateToProps(state) {
+  return {
+    groups: state.groups,
+  }
+}
+
+export default connect(mapStateToProps, {getData})(GroupsList);
