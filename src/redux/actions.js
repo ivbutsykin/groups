@@ -1,6 +1,6 @@
 import {getGroupsList} from '../api/groups.service';
 
-export function getData() {
+export function fetchGroupsList() {
   return async function(dispatch) {
     let response = await getGroupsList();
     let groups = await response.json();

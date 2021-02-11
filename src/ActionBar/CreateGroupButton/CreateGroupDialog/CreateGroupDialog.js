@@ -7,7 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 // import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {postCreateGroup} from '../../../api/groups.service';
-import {getData} from '../../../redux/actions';
+import {fetchGroupsList} from '../../../redux/actions';
 
 import {connect} from 'react-redux';
 
@@ -20,13 +20,14 @@ class CreateGroupDialog extends Component {
     this.setState({groupName: e.target.value});
   };
 
-  handleClick = () => {
-    postCreateGroup({name: this.state.groupName}).then(() => this.props.getData());
-    this.props.onChangeOpenCreateGroupDialog(false);
+  handleClick = async () => {
+    await postCreateGroup({name: this.state.groupName})
+    await this.props.fetchGroupsList();
+    this.props.onClose(false);
   };
 
   handleClose = () => {
-    this.props.onChangeOpenCreateGroupDialog(false);
+    this.props.onClose(false);
   };
 
   render() {
@@ -44,4 +45,4 @@ class CreateGroupDialog extends Component {
   }
 }
 
-export default connect(null, {getData})(CreateGroupDialog);
+export default connect(null, {fetchGroupsList})(CreateGroupDialog);

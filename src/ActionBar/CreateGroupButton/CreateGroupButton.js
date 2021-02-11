@@ -24,7 +24,7 @@ class CreateGroupButton extends Component {
                 <GroupAddIcon/>
               </IconButton>
               <CreateGroupDialog open={this.state.isOpenCreateGroupDialog}
-                                 onChangeOpenCreateGroupDialog={this.handleChangeOpenCreateGroupDialog}/>
+                                 onClose={this.handleChangeOpenCreateGroupDialog}/>
             </>
         )
     );

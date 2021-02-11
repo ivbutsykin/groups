@@ -1,13 +1,13 @@
 import {Component} from 'react';
 import List from '@material-ui/core/List';
 import GroupsListItem from './GroupsListItem/GroupsListItem';
-import {getData} from '../redux/actions';
+import {fetchGroupsList} from '../redux/actions';
 
 import {connect} from 'react-redux';
 
 class GroupsList extends Component {
   componentDidMount() {
-    this.props.getData();
+    this.props.fetchGroupsList();
   }
 
   generate() {
@@ -27,4 +27,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {getData})(GroupsList);
+export default connect(mapStateToProps, {fetchGroupsList})(GroupsList);
