@@ -1,5 +1,4 @@
 import {Component} from 'react';
-import List from '@material-ui/core/List';
 import {connect} from 'react-redux';
 import {fetchMessagesList} from '../../redux/actions';
 import MessagesListItem from './MessagesListItem/MessagesListItem';
@@ -16,7 +15,7 @@ class MessagesList extends Component {
   }
 
   render() {
-    return <List>{this.generate()}</List>
+    return <div style={{margin: "10px 0"}}>{this.generate()}</div>
   }
 }
 

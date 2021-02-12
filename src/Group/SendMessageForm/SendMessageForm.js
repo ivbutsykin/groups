@@ -19,7 +19,7 @@ class SendMessageForm extends Component {
   handleClick = async () => {
     await postMessage({
       body: this.state.messageBody,
-      user: '6026d321faa59615cc472de2',
+      user: '6026e0c5bb52cd177be2b0c0',
       group: `${this.props.id}`,
     });
     await this.props.fetchMessagesList(this.props.id);
@@ -33,6 +33,7 @@ class SendMessageForm extends Component {
             <TextField placeholder="Message" fullWidth
                        variant="outlined" margin="dense"
                        value={this.state.messageBody}
+                       color="primary"
                        onChange={this.handleChange}/>
           </Grid>
           <Grid item xs={5} sm={3}>

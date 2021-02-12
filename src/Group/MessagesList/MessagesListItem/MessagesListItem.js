@@ -1,16 +1,18 @@
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+import TextField from '@material-ui/core/TextField';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Grid from '@material-ui/core/Grid';
 
 function MessagesListItem(props) {
   return (
-      <ListItem>
-        <ListItemIcon>
-          <AccountCircleIcon/>
-        </ListItemIcon>
-        <ListItemText primary={props.body}/>
-      </ListItem>
+      <Grid container spacing={2} alignItems="center">
+        <Grid item>
+          <AccountCircle/>
+        </Grid>
+        <Grid item>
+          <TextField value={props.body} variant="outlined" size="small"
+                     disabled/>
+        </Grid>
+      </Grid>
   );
 }
 
