@@ -5,6 +5,7 @@ import LogButton from './LogButton/LogButton';
 import CreateGroupButton from './CreateGroupButton/CreateGroupButton';
 import BackArrow from './BackArrow/BackArrow';
 import {connect} from 'react-redux';
+import OptionsButton from './OptionsButton/OptionsButton';
 
 class ActionBar extends Component {
   render() {
@@ -15,6 +16,8 @@ class ActionBar extends Component {
             <CreateGroupButton open={this.props.authorized}/>}
             {this.props.visiableBackArrow &&
             <BackArrow/>}
+            {this.props.visiableOptionsButton &&
+            <OptionsButton open={this.props.authorized}/>}
             <LogButton
                 isOpenCreateGroupButton={this.props.authorized}
             />

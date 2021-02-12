@@ -7,9 +7,10 @@ import {connect} from 'react-redux';
 class Group extends Component {
   render() {
     return <>
-      <ActionBar visiableBackArrow="true"/>
+      <ActionBar visiableBackArrow="true" visiableOptionsButton="true"/>
       <MessagesList id={this.props.match.params.id}/>
-      <SendMessageForm open={this.props.authorized} id={this.props.match.params.id}/>
+      <SendMessageForm open={this.props.authorized}
+                       id={this.props.match.params.id}/>
     </>;
   }
 }

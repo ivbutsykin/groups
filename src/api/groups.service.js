@@ -25,3 +25,9 @@ export function postMessage(body) {
     body: JSON.stringify(body),
   })
 }
+
+export function deleteGroup(id) {
+  fetch(`https://localhost:1337/groups/${id}`, {
+    method: 'DELETE',
+  })
+}

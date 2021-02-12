@@ -15,7 +15,7 @@ class MessagesList extends Component {
   }
 
   render() {
-    return <div style={{margin: "10px 0"}}>{this.generate()}</div>
+    return <div style={{marginTop: "20px"}}>{this.generate()}</div>
   }
 }
 
