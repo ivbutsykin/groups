@@ -2,8 +2,8 @@ import {Component} from 'react';
 import List from '@material-ui/core/List';
 import GroupsListItem from './GroupsListItem/GroupsListItem';
 import {fetchGroupsList} from '../redux/actions';
-
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class GroupsList extends Component {
   componentDidMount() {
@@ -12,7 +12,9 @@ class GroupsList extends Component {
 
   generate() {
     return this.props.groups.map(group => (
-        <GroupsListItem key={group.id} name={group.name}/>
+        <Link to={`/group/${group.id}`} style={{ textDecoration: 'none', color: 'black' }} key={group.id}>
+          <GroupsListItem name={group.name}/>
+        </Link>
     ));
   }
 
