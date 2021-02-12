@@ -36,7 +36,7 @@ class LogButton extends Component {
     return (
         <div style={style}>
           <IconButton color="inherit" onClick={this.handleMenu}>
-            <AccountCircle/>
+            <AccountCircle />
           </IconButton>
           <Menu
               id="menu-appbar"

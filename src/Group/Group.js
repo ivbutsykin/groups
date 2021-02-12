@@ -3,7 +3,7 @@ import ActionBar from '../ActionBar/ActionBar';
 
 class Group extends Component {
   render() {
-    return <ActionBar/>;
+    return <ActionBar visiableBackArrow="true"/>;
   }
 }
 

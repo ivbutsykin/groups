@@ -3,7 +3,6 @@ import GroupsList from './GroupsList/GroupsList';
 import ActionBar from './ActionBar/ActionBar';
 import Group from './Group/Group';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-// import CreateGroupButton from './ActionBar/CreateGroupButton/CreateGroupButton';
 
 function App() {
   return (
@@ -11,13 +10,11 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/">
-              <ActionBar>
-                {/*<CreateGroupButton/>*/}
-              </ActionBar>
+              <ActionBar visiableCreateGroupButton="true"/>
               <GroupsList/>
             </Route>
             <Route path={`/group/:id`}>
-              <Group />
+              <Group/>
             </Route>
           </Switch>
         </Router>
