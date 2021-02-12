@@ -3,6 +3,8 @@ import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import {authorization} from '../../redux/actions';
+import {connect} from 'react-redux';
 
 class LogButton extends Component {
   state = {
@@ -18,9 +20,7 @@ class LogButton extends Component {
   };
 
   handleClick = () => {
-    this.props.onChangeOpenCreateGroupButton(
-        !this.props.isOpenCreateGroupButton,
-    );
+    this.props.authorization();
     this.handleClose();
   };
 
@@ -54,4 +54,4 @@ class LogButton extends Component {
   }
 }
 
-export default LogButton;
+export default connect(null, {authorization})(LogButton);

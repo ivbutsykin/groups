@@ -4,29 +4,19 @@ import Toolbar from '@material-ui/core/Toolbar';
 import LogButton from './LogButton/LogButton';
 import CreateGroupButton from './CreateGroupButton/CreateGroupButton';
 import BackArrow from './BackArrow/BackArrow';
+import {connect} from 'react-redux';
 
 class ActionBar extends Component {
-  state = {
-    isOpenCreateGroupButton: false,
-  };
-
-  handleChangeOpenCreateGroupButton = value => {
-    this.setState({isOpenCreateGroupButton: value});
-  };
-
   render() {
     return (
         <AppBar position="static">
           <Toolbar>
             {this.props.visiableCreateGroupButton &&
-            <CreateGroupButton open={this.state.isOpenCreateGroupButton}/>}
+            <CreateGroupButton open={this.props.authorized}/>}
             {this.props.visiableBackArrow &&
             <BackArrow/>}
             <LogButton
-                isOpenCreateGroupButton={this.state.isOpenCreateGroupButton}
-                onChangeOpenCreateGroupButton={
-                  this.handleChangeOpenCreateGroupButton
-                }
+                isOpenCreateGroupButton={this.props.authorized}
             />
           </Toolbar>
         </AppBar>
@@ -34,4 +24,10 @@ class ActionBar extends Component {
   }
 }
 
-export default ActionBar;
+function mapStateToProps(state) {
+  return {
+    authorized: state.authorized,
+  };
+}
+
+export default connect(mapStateToProps)(ActionBar);

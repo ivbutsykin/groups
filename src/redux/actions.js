@@ -7,3 +7,9 @@ export function fetchGroupsList() {
     dispatch({type: 'GET_GROUPS_LIST', payload: groups});
   };
 }
+
+export function authorization() {
+  return function(dispatch) {
+    dispatch({type: 'CHANGE_AUTHORIZED_STATUS'})
+  }
+}
