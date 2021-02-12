@@ -12,7 +12,7 @@ class GroupsList extends Component {
 
   generate() {
     return this.props.groups.map(group => (
-        <Link to={`/group/${group.id}`} style={{ textDecoration: 'none', color: 'black' }} key={group.id}>
+        <Link to={`/groups/${group.id}`} style={{ textDecoration: 'none', color: 'black' }} key={group.id}>
           <GroupsListItem name={group.name}/>
         </Link>
     ));

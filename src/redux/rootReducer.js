@@ -1,19 +1,24 @@
 const initialState = {
   authorized: false,
   groups: [],
+  messages: [],
 };
 
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'GET_GROUPS_LIST': {
-      console.log(state)
       return {
         ...state,
         groups: action.payload,
       };
     }
+    case 'GET_MESSAGES_LIST': {
+      return {
+        ...state,
+        messages: action.payload,
+      }
+    }
     case 'CHANGE_AUTHORIZED_STATUS': {
-      console.log(state)
       return {
         ...state,
         authorized: !state.authorized,

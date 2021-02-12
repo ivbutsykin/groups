@@ -13,9 +13,7 @@ function App() {
               <ActionBar visiableCreateGroupButton="true"/>
               <GroupsList/>
             </Route>
-            <Route path={`/group/:id`}>
-              <Group/>
-            </Route>
+            <Route path={`/groups/:id`} component={Group}/>
           </Switch>
         </Router>
       </Container>
