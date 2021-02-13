@@ -1,28 +1,63 @@
-import {Component} from 'react';
-import {connect} from 'react-redux';
-import {fetchMessagesList} from '../../redux/actions';
+import { Component } from 'react';
+import { connect } from 'react-redux';
+
+import List from '@material-ui/core/List';
+import Box from '@material-ui/core/Box';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import MessagesListItem from './MessagesListItem/MessagesListItem';
+import { fetchMessageList } from '../actions';
 
 class MessagesList extends Component {
+  state = {
+    loading: false,
+  };
+
   componentDidMount() {
-    this.props.fetchMessagesList(this.props.id);
+    void this.fetchMessageList();
   }
 
-  generate() {
-    return this.props.messages.map(message => (
-          <MessagesListItem body={message.body} key={message.id}/>
-    ));
+  async fetchMessageList() {
+    this.setState({ loading: true });
+    await this.props.fetchMessageList(this.props.id);
+    this.setState({ loading: false });
   }
 
   render() {
-    return <div style={{marginTop: "20px"}}>{this.generate()}</div>
+    const { messages } = this.props;
+    const { loading } = this.state;
+
+    if (loading) {
+      return (
+          <Box
+              display="flex"
+              alignItems="center"
+              flexDirection="column"
+              p={5}
+          >
+            <CircularProgress />
+          </Box>
+      );
+    }
+
+    return <div style={{ marginTop: '20px' }}>
+      {
+        messages.map(message =>
+            (
+                <MessagesListItem
+                    body={message.body}
+                    key={message.id}
+                />
+            ))
+      }
+    </div>;
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ group: state }) {
   return {
     messages: state.messages,
-  }
+  };
 }
 
-export default connect(mapStateToProps, {fetchMessagesList})(MessagesList);
+export default connect(mapStateToProps, { fetchMessageList })(MessagesList);

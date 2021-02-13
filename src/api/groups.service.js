@@ -1,5 +1,7 @@
+export const API_URL = process.env.REACT_APP_API_URL;
+
 export function getGroupsList() {
-  return fetch('http://localhost:1337/groups');
+  return fetch(`${API_URL}/groups`);
 }
 
 export function getMessagesList(id) {
@@ -27,7 +29,7 @@ export function postMessage(body) {
 }
 
 export function deleteGroup(id) {
-  fetch(`https://localhost:1337/groups/${id}`, {
+  return fetch(`https://localhost:1337/groups/${id}`, {
     method: 'DELETE',
   })
 }

@@ -1,23 +1,27 @@
-import {Component} from 'react';
+import { Component } from 'react';
+import { connect } from 'react-redux';
 import ActionBar from '../ActionBar/ActionBar';
 import SendMessageForm from './SendMessageForm/SendMessageForm';
 import MessagesList from './MessagesList/MessagesList';
-import {connect} from 'react-redux';
 
 class Group extends Component {
   render() {
+    const { match: { params } } = this.props;
+
     return <>
-      <ActionBar visiableBackArrow="true" visiableOptionsButton="true"/>
-      <MessagesList id={this.props.match.params.id}/>
-      <SendMessageForm open={this.props.authorized}
-                       id={this.props.match.params.id}/>
+      <ActionBar
+          visiableBackArrow
+          visiableOptionsButton
+      />
+      <MessagesList id={params.id} />
+      <SendMessageForm groupId={params.id} />
     </>;
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ auth: state }) {
   return {
-    authorized: state.authorized,
+    authorized: state.isLoggedIn,
   };
 }
 

@@ -27,9 +27,9 @@ class ActionBar extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ auth }) {
   return {
-    authorized: state.authorized,
+    authorized: auth.isLoggedIn,
   };
 }
 
