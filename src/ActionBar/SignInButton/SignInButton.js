@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import {signIn} from '../../Authorization/actions';
 import {connect} from 'react-redux';
 
-class LogButton extends Component {
+class SignInButton extends Component {
   state = {
     anchorEl: null,
   };
@@ -54,4 +54,4 @@ class LogButton extends Component {
   }
 }
 
-export default connect(null, {signIn})(LogButton);
+export default connect(null, {signIn})(SignInButton);

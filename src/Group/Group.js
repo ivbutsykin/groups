@@ -1,21 +1,21 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import ActionBar from '../ActionBar/ActionBar';
+
+import Box from '@material-ui/core/Box';
+
 import SendMessageForm from './SendMessageForm/SendMessageForm';
-import MessagesList from './MessagesList/MessagesList';
+import Messages from './Messages/Messages';
+
+import styles from './group.module.css';
 
 class Group extends Component {
   render() {
     const { match: { params } } = this.props;
 
-    return <>
-      <ActionBar
-          visiableBackArrow
-          visiableOptionsButton
-      />
-      <MessagesList id={params.id} />
+    return <Box className={styles.root}>
+      <Messages id={params.id} />
       <SendMessageForm groupId={params.id} />
-    </>;
+    </Box>;
   }
 }
 
