@@ -1,15 +1,9 @@
 import { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-// import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import { connect } from 'react-redux';
+
+import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 
 import { createGroup } from '../../../GroupsList/actions';
-
-import { connect } from 'react-redux';
 
 class CreateGroupDialog extends Component {
   state = {
@@ -38,26 +32,26 @@ class CreateGroupDialog extends Component {
   render() {
     const { loading } = this.state;
     return (<Dialog
-        maxWidth="md"
-        open={this.props.open}
-        onClose={this.handleClose}
+      maxWidth="md"
+      open={this.props.open}
+      onClose={this.handleClose}
     >
       <DialogTitle>Create group</DialogTitle>
       <DialogContent>
         <TextField
-            autoFocus
-            label="Group name"
-            fullWidth
-            onChange={this.handleChange}
+          autoFocus
+          label="Group name"
+          fullWidth
+          onChange={this.handleChange}
         />
       </DialogContent>
       <DialogActions>
         <Button onClick={this.handleClose}>Cancel</Button>
         <Button
-            color="primary"
-            variant="contained"
-            disabled={loading}
-            onClick={this.handleClick}
+          color="primary"
+          variant="contained"
+          disabled={loading}
+          onClick={this.handleClick}
         >
           Create
         </Button>

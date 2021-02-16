@@ -1,10 +1,10 @@
-import {Component} from 'react';
-import IconButton from '@material-ui/core/IconButton';
+import { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { IconButton, Menu, MenuItem } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import {signIn} from '../../Authorization/actions';
-import {connect} from 'react-redux';
+
+import { signIn } from '../../Authorization/actions';
 
 class SignInButton extends Component {
   state = {
@@ -12,11 +12,11 @@ class SignInButton extends Component {
   };
 
   handleMenu = event => {
-    this.setState({anchorEl: event.currentTarget});
+    this.setState({ anchorEl: event.currentTarget });
   };
 
   handleClose = () => {
-    this.setState({anchorEl: null});
+    this.setState({ anchorEl: null });
   };
 
   handleClick = () => {
@@ -31,27 +31,24 @@ class SignInButton extends Component {
     };
 
     const openMenu = Boolean(this.state.anchorEl);
-    const openCreateGroupButton = this.props.isOpenCreateGroupButton;
 
     return (
-        <div style={style}>
-          <IconButton color="inherit" onClick={this.handleMenu}>
-            <AccountCircle />
-          </IconButton>
-          <Menu
-              id="menu-appbar"
-              anchorEl={this.state.anchorEl}
-              keepMounted
-              open={openMenu}
-              onClose={this.handleClose}
-          >
-            <MenuItem onClick={this.handleClick}>
-              Sign {!openCreateGroupButton ? 'in' : 'out'}
-            </MenuItem>
-          </Menu>
-        </div>
+      <div style={style}>
+        <IconButton color="inherit" onClick={this.handleMenu}>
+          <AccountCircle/>
+        </IconButton>
+        <Menu
+          anchorEl={this.state.anchorEl}
+          open={openMenu}
+          onClose={this.handleClose}
+        >
+          <MenuItem onClick={this.handleClick}>
+            Sign in
+          </MenuItem>
+        </Menu>
+      </div>
     );
   }
 }
 
-export default connect(null, {signIn})(SignInButton);
+export default connect(null, { signIn })(SignInButton);

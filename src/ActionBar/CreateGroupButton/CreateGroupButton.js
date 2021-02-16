@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import IconButton from '@material-ui/core/IconButton';
+import { IconButton } from '@material-ui/core';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 
 import CreateGroupDialog from './CreateGroupDialog/CreateGroupDialog';
@@ -26,18 +26,18 @@ class CreateGroupButton extends Component {
     }
 
     return (
-        <>
-          <IconButton
-              color="inherit"
-              onClick={this.handleClick}
-          >
-            <GroupAddIcon />
-          </IconButton>
-          <CreateGroupDialog
-              open={this.state.isOpenCreateGroupDialog}
-              onClose={this.handleChangeOpenCreateGroupDialog}
-          />
-        </>
+      <>
+        <IconButton
+          color="inherit"
+          onClick={this.handleClick}
+        >
+          <GroupAddIcon/>
+        </IconButton>
+        <CreateGroupDialog
+          open={this.state.isOpenCreateGroupDialog}
+          onClose={this.handleChangeOpenCreateGroupDialog}
+        />
+      </>
     );
   }
 }

@@ -1,4 +1,5 @@
 import {
+  FETCH_GROUP,
   FETCH_MESSAGE_LIST,
   FETCH_MORE_MESSAGE_LIST,
   PUBLISH_MESSAGE,
@@ -17,6 +18,13 @@ export function groupReducer(state = initialState, action) {
       };
     }
 
+    case FETCH_GROUP: {
+      return {
+        ...action.payload,
+        ...state,
+      };
+    }
+
     case FETCH_MORE_MESSAGE_LIST: {
       const messages = [].concat(state.messages, action.payload);
 
@@ -27,11 +35,11 @@ export function groupReducer(state = initialState, action) {
     }
 
     case PUBLISH_MESSAGE:
-      const messages = [...state.messages, action.payload];
+      const messages = [action.payload, ...state.messages];
       return {
         ...state,
         messages,
-      }
+      };
 
     default:
       return state;

@@ -4,9 +4,13 @@ export function getGroupsList() {
   return fetch(`${API_URL}/groups`);
 }
 
+export function fetchGroupById(id) {
+  return fetch(`${API_URL}/groups/${id}`);
+}
+
 export function getMessagesList(id, { limit = 10, skip = 0 }) {
   return fetch(
-      `${API_URL}/groups/${id}/messages?limit=${limit}&skip=${skip}&sort=createdAt desc`);
+    `${API_URL}/groups/${id}/messages?limit=${limit}&skip=${skip}&sort=createdAt desc`);
 }
 
 export function postCreateGroup(body) {
@@ -30,7 +34,7 @@ export function postMessage(body) {
 }
 
 export function deleteGroup(id) {
-  return fetch(`http://localhost:1337/groups/${id}`, {
+  return fetch(`${API_URL}/groups/${id}`, {
     method: 'DELETE',
   });
 }
