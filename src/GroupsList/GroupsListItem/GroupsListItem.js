@@ -16,11 +16,14 @@ function GroupsListItem(props) {
         <GroupIcon/>
       </ListItemIcon>
       <ListItemText primary={group.name}/>
-      <ListItemSecondaryAction>
-        <IconButton edge="end" onClick={handleRemoveClick}>
-          <DeleteIcon/>
-        </IconButton>
-      </ListItemSecondaryAction>
+      {
+        props.authorized &&
+        <ListItemSecondaryAction>
+          <IconButton edge="end" onClick={handleRemoveClick}>
+            <DeleteIcon/>
+          </IconButton>
+        </ListItemSecondaryAction>
+      }
     </ListItem>
   );
 
@@ -30,4 +33,10 @@ function GroupsListItem(props) {
   }
 }
 
-export default connect(null, { fetchDeleteGroup })(GroupsListItem);
+function mapStateToProps({ auth }) {
+  return {
+    authorized: auth.isLoggedIn,
+  };
+}
+
+export default connect(mapStateToProps, { fetchDeleteGroup })(GroupsListItem);

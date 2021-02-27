@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { TextField, Grid, Button } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 
-import { publishMessage } from '../actions';
+import { publishMessage, fetchGroup } from '../actions';
 
 class SendMessageForm extends Component {
   state = {
     body: '',
     loading: false,
+    error: null,
   };
 
   handleChange = e => {
@@ -19,6 +20,19 @@ class SendMessageForm extends Component {
   handleClick = () => {
     void this.publish();
   };
+
+  componentDidMount() {
+    void this.checkError();
+  }
+
+  async checkError() {
+    try {
+      const { groupId } = this.props;
+      await this.props.fetchGroup(groupId);
+    } catch (e) {
+      this.setState({error: e});
+    }
+  }
 
   async publish() {
     const { auth: { user }, groupId, publishMessage } = this.props;
@@ -41,7 +55,7 @@ class SendMessageForm extends Component {
     const { auth } = this.props;
     const { body, loading } = this.state;
 
-    if (!auth.isLoggedIn) {
+    if (!auth.isLoggedIn || this.state.error) {
       return null;
     }
 
@@ -91,4 +105,4 @@ class SendMessageForm extends Component {
 export default connect(({ auth }, props) => ({
   ...props,
   auth,
-}), { publishMessage })(SendMessageForm);
+}), { publishMessage, fetchGroup })(SendMessageForm);

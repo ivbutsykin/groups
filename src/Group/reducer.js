@@ -6,6 +6,7 @@ import {
 } from './types';
 
 export const initialState = {
+  name: '',
   messages: [],
 };
 
@@ -22,6 +23,7 @@ export function groupReducer(state = initialState, action) {
       return {
         ...action.payload,
         ...state,
+        name: action.payload.name,
       };
     }
 

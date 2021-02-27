@@ -11,18 +11,18 @@ import styles from './group.module.css';
 import { fetchGroup } from './actions';
 
 class Group extends Component {
-  // state = {
-  //   loading: false,
-  //   error: null,
-  // };
+  state = {
+    loading: false,
+    error: null,
+    name: '',
+  };
 
   async componentDidMount() {
     const { match: { params }, fetchGroup } = this.props;
-
     try {
       this.setState({ loading: true });
       await fetchGroup(params.id);
-      this.setState({ loading: false });
+      this.setState({ loading: false, name: this.props.name });
     } catch (error) {
       this.setState({ loading: false, error: 'Group not found' });
     }
@@ -42,10 +42,17 @@ class Group extends Component {
     // }
 
     return <Box className={styles.root}>
+      <h1 style={{textAlign: "center"}}>{this.state.name}</h1>
       <Messages id={params.id}/>
       <SendMessageForm groupId={params.id}/>
     </Box>;
   }
 }
 
-export default connect(null, { fetchGroup })(Group);
+function mapStateToProps({ group: state }) {
+  return {
+    name: state.name,
+  };
+}
+
+export default connect(mapStateToProps, { fetchGroup })(Group);

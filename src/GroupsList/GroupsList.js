@@ -28,21 +28,6 @@ class GroupsList extends Component {
     const { groups } = this.props;
     const { loading } = this.state;
 
-    if (groups.length === 0) {
-      return (
-        <Box
-          height="100%"
-          display="flex"
-          alignItems="center"
-          flexDirection="column"
-          justifyContent="center"
-          flex={1}
-        >
-          <span style={{ color: 'grey' }}>No groups here yet</span>
-        </Box>
-      );
-    }
-
     if (loading) {
       return (
         <Box
@@ -54,6 +39,21 @@ class GroupsList extends Component {
           p={5}
         >
           <CircularProgress/>
+        </Box>
+      );
+    }
+
+    if (groups.length === 0) {
+      return (
+        <Box
+          height="100%"
+          display="flex"
+          alignItems="center"
+          flexDirection="column"
+          justifyContent="center"
+          flex={1}
+        >
+          <span style={{ color: 'grey' }}>No groups here yet</span>
         </Box>
       );
     }

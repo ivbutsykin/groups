@@ -124,9 +124,9 @@ class Messages extends Component {
         >
           {
             messages.map(message => {
-              // const userName = (typeof message.user === 'string')
-              //   ? message.user
-              //   : message.user.name;
+              const userName = (typeof message.user === 'string')
+                ? message.user
+                : message.user.name;
 
               return (
                 <ListItem
@@ -137,8 +137,8 @@ class Messages extends Component {
                     <Avatar />
                   </ListItemAvatar>
                   <ListItemText
-                    // primary={userName}
-                    primary={message.user.name}
+                    primary={userName}
+                    // primary={message.user.name}
                     secondary={message.body}
                   />
                 </ListItem>
