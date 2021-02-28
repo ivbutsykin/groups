@@ -16,8 +16,10 @@ export function fetchGroupList() {
 }
 
 export function createGroup(data) {
-  return async function (dispatch) {
-    const response = await postCreateGroup(data);
+  return async function (dispatch, getState) {
+    const { auth } = getState();
+
+    const response = await postCreateGroup(data, auth.token);
     const group = await response.json();
 
     dispatch({ type: CREATE_GROUP, payload: group });
@@ -25,9 +27,12 @@ export function createGroup(data) {
 }
 
 export function fetchDeleteGroup(id) {
-  return async function (dispatch) {
-    await deleteGroup(id);
+  return async function (dispatch, getState) {
+    const { auth } = getState();
+    const response = await deleteGroup(id, auth.token);
 
-    dispatch({ type: DELETE_GROUP, payload: id });
+    if (response.ok) {
+      dispatch({ type: DELETE_GROUP, payload: id });
+    }
   };
 }

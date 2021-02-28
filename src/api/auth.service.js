@@ -1,12 +1,16 @@
+export const API_URL = process.env.REACT_APP_API_URL;
+
 export const STORAGE = '@groups.user';
 
-export function login() {
-  sessionStorage.setItem(STORAGE, JSON.stringify({
-    name: 'Foo Bar',
-    email: 'foo@bar.com',
-    id: '6026e0c5bb52cd177be2b0c0',
-  }));
-  return Promise.resolve();
+export async function login(email, password) {
+  const response = await fetch(`${API_URL}/auth/login`, {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  });
+
+  const token = await response.text();
+  sessionStorage.setItem(STORAGE, token);
+  return token;
 }
 
 export function logout() {

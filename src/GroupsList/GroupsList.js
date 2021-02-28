@@ -25,7 +25,7 @@ class GroupsList extends Component {
   }
 
   render() {
-    const { groups } = this.props;
+    const { groups, user } = this.props;
     const { loading } = this.state;
 
     if (loading) {
@@ -67,7 +67,7 @@ class GroupsList extends Component {
               style={{ textDecoration: 'none', color: 'black' }}
               key={group.id}
             >
-              <GroupsListItem group={group}/>
+              <GroupsListItem group={group} user={user}/>
             </Link>
           ))
         }
@@ -76,9 +76,10 @@ class GroupsList extends Component {
   }
 }
 
-function mapStateToProps({ groups: state }) {
+function mapStateToProps({ groups: state, auth }) {
   return {
     groups: state.groups,
+    user: auth.user,
   };
 }
 

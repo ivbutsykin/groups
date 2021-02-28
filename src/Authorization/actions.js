@@ -1,12 +1,16 @@
+import jwt from 'jsonwebtoken';
+
 import { login, logout } from '../api/auth.service';
 
 import { SIGN_IN, SIGN_OUT } from './types';
 
-export function signIn() {
+export function signIn(email, password) {
   return async function (dispatch) {
-    const response = await login();
+    const token = await login(email, password);
 
-    dispatch({ type: SIGN_IN, payload: response });
+    const user = jwt.decode(token);
+
+    dispatch({ type: SIGN_IN, payload: { token, user } });
   };
 }
 

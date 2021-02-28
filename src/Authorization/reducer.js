@@ -1,18 +1,23 @@
+import jwt from 'jsonwebtoken';
+
 import { STORAGE } from '../api/auth.service';
 import { SIGN_IN, SIGN_OUT } from './types';
 
-let loggedInUser;
+let token;
+let user;
 
 try {
-  const data = sessionStorage.getItem(STORAGE);
-  loggedInUser = JSON.parse(data);
+  token = sessionStorage.getItem(STORAGE);
+  user = jwt.decode(token);
 } catch (error) {
-  loggedInUser = null;
+  token = null;
+  user = null;
 }
 
 export const initialState = {
-  user: loggedInUser,
-  isLoggedIn: !!loggedInUser,
+  user,
+  token,
+  isLoggedIn: !!token,
 };
 
 export function authReducer(state = initialState, action) {
@@ -20,7 +25,8 @@ export function authReducer(state = initialState, action) {
     case SIGN_IN:
       return {
         ...state,
-        user: action.payload,
+        user: action.payload.user,
+        token: action.payload.token,
         isLoggedIn: true,
       };
 
@@ -28,6 +34,7 @@ export function authReducer(state = initialState, action) {
       return {
         ...state,
         user: null,
+        token: null,
         isLoggedIn: false,
       };
 

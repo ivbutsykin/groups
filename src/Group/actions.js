@@ -34,8 +34,9 @@ export function fetchMoreMessages(id, options) {
 }
 
 export function publishMessage(body) {
-  return async function (dispatch) {
-    const response = await postMessage(body);
+  return async function (dispatch, getState) {
+    const { auth } = getState();
+    const response = await postMessage(body, auth.token);
     const message = await response.json();
 
     dispatch({ type: PUBLISH_MESSAGE, payload: message });

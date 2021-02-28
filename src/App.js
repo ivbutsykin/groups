@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import ActionBar from './ActionBar/ActionBar';
 import GroupsList from './GroupsList/GroupsList';
 import Group from './Group/Group';
+import SignIn from './Authorization/Authorization';
 
 import styles from './app.module.css';
 
@@ -28,6 +29,7 @@ function App() {
             path="/groups/:id"
             component={Group}
           />
+          <Route path="/signin" component={SignIn}/>
         </Switch>
       </Container>
     </Router>

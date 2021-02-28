@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 import { IconButton, Menu, MenuItem } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
@@ -20,7 +22,6 @@ class SignInButton extends Component {
   };
 
   handleClick = () => {
-    this.props.signIn();
     this.handleClose();
   };
 
@@ -42,9 +43,14 @@ class SignInButton extends Component {
           open={openMenu}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClick}>
-            Sign in
-          </MenuItem>
+          <Link to="/signin" style={{
+            textDecoration: 'none',
+            color: 'black',
+          }}>
+            <MenuItem onClick={this.handleClick}>
+              Sign in
+            </MenuItem>
+          </Link>
         </Menu>
       </div>
     );

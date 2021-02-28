@@ -8,7 +8,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { fetchDeleteGroup } from '../actions';
 
 function GroupsListItem(props) {
-  const { group } = props;
+  const { group, user } = props;
+  const isOwner = user.id === group.createdBy;
 
   return (
     <ListItem>
@@ -17,7 +18,7 @@ function GroupsListItem(props) {
       </ListItemIcon>
       <ListItemText primary={group.name}/>
       {
-        props.authorized &&
+        true &&
         <ListItemSecondaryAction>
           <IconButton edge="end" onClick={handleRemoveClick}>
             <DeleteIcon/>
