@@ -1,7 +1,14 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
+import {
+  Button,
+  TextField,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle
+} from '@material-ui/core';
 
 import { createGroup } from '../../../GroupsList/actions';
 
@@ -16,7 +23,10 @@ class CreateGroupDialog extends Component {
   };
 
   handleClick = async () => {
-    const { createGroup, onClose } = this.props;
+    const {
+      createGroup,
+      onClose
+    } = this.props;
 
     this.setState({ loading: true });
     await createGroup({ name: this.state.groupName });

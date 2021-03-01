@@ -33,14 +33,23 @@ class Messages extends Component {
     try {
       this.setState({ loading: true });
       const hasMore = await this.props.fetchMessageList(this.props.id);
-      this.setState({ loading: false, hasMore });
+      this.setState({
+        loading: false,
+        hasMore
+      });
     } catch (error) {
-      this.setState({ error: 'Group not found!', loading: false });
+      this.setState({
+        error: 'Group not found!',
+        loading: false
+      });
     }
   }
 
   fetchMore = async () => {
-    const { messages, fetchMoreMessages } = this.props;
+    const {
+      messages,
+      fetchMoreMessages
+    } = this.props;
     const hasMore = await fetchMoreMessages(this.props.id, {
       limit: 10,
       skip: messages.length,
@@ -51,7 +60,11 @@ class Messages extends Component {
 
   render() {
     const { messages } = this.props;
-    const { loading, error, hasMore } = this.state;
+    const {
+      loading,
+      error,
+      hasMore
+    } = this.state;
 
     if (loading) {
       return (
@@ -134,7 +147,7 @@ class Messages extends Component {
                   key={message.id}
                 >
                   <ListItemAvatar>
-                    <Avatar />
+                    <Avatar/>
                   </ListItemAvatar>
                   <ListItemText
                     primary={userName}
@@ -158,4 +171,7 @@ function mapStateToProps({ group: state }) {
 }
 
 export default connect(mapStateToProps,
-  { fetchMessageList, fetchMoreMessages })(Messages);
+  {
+    fetchMessageList,
+    fetchMoreMessages
+  })(Messages);

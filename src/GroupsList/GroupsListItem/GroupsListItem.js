@@ -1,6 +1,12 @@
 import { connect } from 'react-redux';
 
-import { ListItem, ListItemIcon, ListItemText, ListItemSecondaryAction, IconButton } from '@material-ui/core';
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton
+} from '@material-ui/core';
 
 import GroupIcon from '@material-ui/icons/Group';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -8,8 +14,14 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { fetchDeleteGroup } from '../actions';
 
 function GroupsListItem(props) {
-  const { group, user } = props;
-  const isOwner = user.id === group.createdBy;
+  const {
+    group,
+    user
+  } = props;
+  let isOwner = false;
+  if (user) {
+    isOwner = user.id === group.createdBy;
+  }
 
   return (
     <ListItem>
@@ -18,7 +30,7 @@ function GroupsListItem(props) {
       </ListItemIcon>
       <ListItemText primary={group.name}/>
       {
-        true &&
+        isOwner &&
         <ListItemSecondaryAction>
           <IconButton edge="end" onClick={handleRemoveClick}>
             <DeleteIcon/>

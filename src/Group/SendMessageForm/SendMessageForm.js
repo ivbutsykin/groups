@@ -30,22 +30,32 @@ class SendMessageForm extends Component {
       const { groupId } = this.props;
       await this.props.fetchGroup(groupId);
     } catch (e) {
-      this.setState({error: e});
+      this.setState({ error: e });
     }
   }
 
   async publish() {
-    const { auth: { user }, groupId, publishMessage } = this.props;
+    const {
+      auth: { user },
+      groupId,
+      publishMessage
+    } = this.props;
     const { body } = this.state;
 
-    this.setState({ ...this.state, loading: true });
+    this.setState({
+      ...this.state,
+      loading: true
+    });
     try {
       await publishMessage({
         body,
         user: user.id,
         group: groupId,
       });
-      this.setState({ body: '', loading: false });
+      this.setState({
+        body: '',
+        loading: false
+      });
     } catch (error) {
       this.setState({ loading: false });
     }
@@ -53,7 +63,10 @@ class SendMessageForm extends Component {
 
   render() {
     const { auth } = this.props;
-    const { body, loading } = this.state;
+    const {
+      body,
+      loading
+    } = this.state;
 
     if (!auth.isLoggedIn || this.state.error) {
       return null;
@@ -105,4 +118,7 @@ class SendMessageForm extends Component {
 export default connect(({ auth }, props) => ({
   ...props,
   auth,
-}), { publishMessage, fetchGroup })(SendMessageForm);
+}), {
+  publishMessage,
+  fetchGroup
+})(SendMessageForm);

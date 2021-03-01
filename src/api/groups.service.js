@@ -8,7 +8,10 @@ export function fetchGroupById(id) {
   return fetch(`${API_URL}/groups/${id}`);
 }
 
-export function getMessagesList(id, { limit = 10, skip = 0 }) {
+export function getMessagesList(id, {
+  limit = 10,
+  skip = 0
+}) {
   return fetch(
     `${API_URL}/groups/${id}/messages?limit=${limit}&skip=${skip}&sort=createdAt desc`);
 }

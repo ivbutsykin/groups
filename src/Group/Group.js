@@ -18,13 +18,22 @@ class Group extends Component {
   };
 
   async componentDidMount() {
-    const { match: { params }, fetchGroup } = this.props;
+    const {
+      match: { params },
+      fetchGroup
+    } = this.props;
     try {
       this.setState({ loading: true });
       await fetchGroup(params.id);
-      this.setState({ loading: false, name: this.props.name });
+      this.setState({
+        loading: false,
+        name: this.props.name
+      });
     } catch (error) {
-      this.setState({ loading: false, error: 'Group not found' });
+      this.setState({
+        loading: false,
+        error: 'Group not found'
+      });
     }
   }
 
@@ -42,7 +51,7 @@ class Group extends Component {
     // }
 
     return <Box className={styles.root}>
-      <h1 style={{textAlign: "center"}}>{this.state.name}</h1>
+      <h1 style={{ textAlign: 'center' }}>{this.state.name}</h1>
       <Messages id={params.id}/>
       <SendMessageForm groupId={params.id}/>
     </Box>;

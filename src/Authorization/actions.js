@@ -10,7 +10,12 @@ export function signIn(email, password) {
 
     const user = jwt.decode(token);
 
-    dispatch({ type: SIGN_IN, payload: { token, user } });
+    dispatch({ type: SIGN_IN,
+      payload: {
+        token,
+        user
+      }
+    });
   };
 }
 

@@ -25,7 +25,10 @@ class ActionBar extends Component {
           }
           {
             !this.isHomePage() &&
-            (<Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+            (<Link to="/" style={{
+              textDecoration: 'none',
+              color: 'black'
+            }}>
               <IconButton style={{ color: '#fff' }}>
                 <ArrowBackIcon/>
               </IconButton>

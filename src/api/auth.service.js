@@ -5,7 +5,10 @@ export const STORAGE = '@groups.user';
 export async function login(email, password) {
   const response = await fetch(`${API_URL}/auth/login`, {
     method: 'POST',
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({
+      email,
+      password
+    }),
   });
 
   const token = await response.text();

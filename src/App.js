@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import ActionBar from './ActionBar/ActionBar';
 import GroupsList from './GroupsList/GroupsList';
 import Group from './Group/Group';
-import SignIn from './Authorization/Authorization';
+import SignIn from './Authorization/SingInForm/SignInForm';
 
 import styles from './app.module.css';
 
