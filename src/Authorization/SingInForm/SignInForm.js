@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import { Typography, Button, TextField } from '@material-ui/core';
 // import { Snackbar } from '@material-ui/core';
@@ -51,6 +51,12 @@ class SignInForm extends Component {
                 onClick={this.handleLoginClick}>
           Sign in
         </Button>
+        <div style={{ margin: '15px 0', textAlign: 'center' }}>
+          <span>New? </span>
+          <Link to='/signup'>
+            Create an account.
+          </Link>
+        </div>
       </div>
       {/*<Snackbar open={open} autoHideDuration={6000} onClose={this.handleClose}>*/}
       {/*  <this.Alert onClose={this.handleClose} severity="success">*/}

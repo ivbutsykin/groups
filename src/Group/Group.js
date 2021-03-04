@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Box from '@material-ui/core/Box';
+import { Box, Typography } from '@material-ui/core';
 
 import SendMessageForm from './SendMessageForm/SendMessageForm';
 import Messages from './Messages/Messages';
@@ -51,7 +51,8 @@ class Group extends Component {
     // }
 
     return <Box className={styles.root}>
-      <h1 style={{ textAlign: 'center' }}>{this.state.name}</h1>
+      <Typography variant="h4" component="h1" align="center"
+                  style={{ marginTop: '15px' }}>{this.state.name}</Typography>
       <Messages id={params.id}/>
       <SendMessageForm groupId={params.id}/>
     </Box>;

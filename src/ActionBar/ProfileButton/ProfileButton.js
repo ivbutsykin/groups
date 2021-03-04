@@ -15,7 +15,7 @@ class ProfileButton extends Component {
 
     return (
       <>
-        <IconButton color="inherit" onClick={this.handleMenu}>
+        <IconButton color="inherit" style={{ marginLeft: '15px' }} onClick={this.handleMenu}>
           <AccountCircle/>
         </IconButton>
         <Menu
@@ -27,9 +27,9 @@ class ProfileButton extends Component {
           {/*  textDecoration: 'none',*/}
           {/*  color: 'black',*/}
           {/*}}>*/}
-            <MenuItem onClick={this.handleClick}>
-              Sign out
-            </MenuItem>
+          <MenuItem onClick={this.handleClick}>
+            Sign out
+          </MenuItem>
           {/*</Link>*/}
         </Menu>
       </>

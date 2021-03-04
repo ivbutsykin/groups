@@ -18,35 +18,25 @@ class ActionBar extends Component {
       justifyContent: 'flex-end'
     };
 
-    const { isHomePage } = this;
+    const { pathname } = this.props.location;
+    const { authorized } = this.props;
 
     return (
       <AppBar position="static">
         <Toolbar style={{ style }}>
-          {/*{*/}
-          {/*  this.isHomePage() &&*/}
-          {/*  <CreateGroupButton open={this.props.authorized}/>*/}
-          {/*}*/}
-          {/*{*/}
-          {/*  !this.isHomePage() &&*/}
-          {/*}*/}
-          <CreateGroupButton/>
-          <GoBackButton/>
+          {pathname === '/' && authorized && <CreateGroupButton/>}
+          {pathname !== '/' && <GoBackButton/>}
           <div style={{
             marginLeft: 'auto',
             marginRight: '0',
           }}>
-            <ProfileButton/>
-            <SignUpButton/>
-            <SignInButton/>
+            {authorized && <ProfileButton/>}
+            {pathname !== '/signin' && !authorized && <SignInButton/>}
+            {pathname !== '/signin' && pathname !== '/signup' && !authorized && <SignUpButton/>}
           </div>
         </Toolbar>
       </AppBar>
     );
-  }
-
-  isHomePage() {
-    return this.props.location.pathname === '/';
   }
 }
 

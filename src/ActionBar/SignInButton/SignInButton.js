@@ -6,10 +6,9 @@ import Button from '@material-ui/core/Button';
 class SignInButton extends Component {
   render() {
     const style = {
-      marginLeft: 'auto',
-      marginRight: '0',
       textDecoration: 'none',
-      color: 'black'
+      color: 'black',
+      marginLeft: '15px'
     };
 
     return (
@@ -17,7 +16,6 @@ class SignInButton extends Component {
         <Button
           variant="contained"
           color="inherit"
-          size="small"
         >
           Sign in
         </Button>
