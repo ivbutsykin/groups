@@ -1,12 +1,12 @@
 import { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { Typography, Button, TextField } from '@material-ui/core';
 // import { Snackbar } from '@material-ui/core';
 // import MuiAlert from '@material-ui/lab/Alert';
 
-// import { signUp } from '../actions';
+import { signUp } from '../actions';
 
 class SignUpForm extends Component {
   state = {
@@ -40,19 +40,19 @@ class SignUpForm extends Component {
       }}>
         <div style={{ margin: '15px 0' }}>
           <Typography style={{ margin: '5px 0' }}>
-            Username
-            <span style={{ color: '#cc0000' }}> *</span>
-          </Typography>
-          <TextField value={username} size="small" variant="outlined" fullWidth
-                     onChange={this.handleUsernameChange}/>
-        </div>
-        <div style={{ margin: '15px 0' }}>
-          <Typography style={{ margin: '5px 0' }}>
             Email address
             <span style={{ color: '#cc0000' }}> *</span>
           </Typography>
           <TextField value={email} size="small" variant="outlined" fullWidth
                      onChange={this.handleEmailChange}/>
+        </div>
+        <div style={{ margin: '15px 0' }}>
+          <Typography style={{ margin: '5px 0' }}>
+            Username
+            <span style={{ color: '#cc0000' }}> *</span>
+          </Typography>
+          <TextField value={username} size="small" variant="outlined" fullWidth
+                     onChange={this.handleUsernameChange}/>
         </div>
         <div style={{ margin: '15px 0' }}>
           <Typography style={{ margin: '5px 0' }}>
@@ -76,24 +76,25 @@ class SignUpForm extends Component {
     </div>);
   }
 
-  handleUsernameChange = e => this.setState({ username: e.target.value });
-
   handleEmailChange = e => this.setState({ email: e.target.value });
+
+  handleUsernameChange = e => this.setState({ username: e.target.value });
 
   handlePasswordChange = e => this.setState({ password: e.target.value });
 
   handleLoginClick = async () => {
-    const { signIn } = this.props;
+    const { signUp } = this.props;
     const {
       email,
+      username,
       password
     } = this.state;
 
     this.setState({ loading: true });
-    await signIn(email, password);
+    await signUp(email, username, password);
     this.setState({
       loading: false,
-      redirect: '/',
+      redirect: '/signin',
       // open: 'true',
     });
   };
@@ -107,5 +108,4 @@ class SignUpForm extends Component {
   // };
 }
 
-export default SignUpForm;
-// export default connect(null, { signIn })(SignUpForm);
+export default connect(null, { signUp })(SignUpForm);

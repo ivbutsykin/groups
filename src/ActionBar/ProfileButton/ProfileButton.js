@@ -5,9 +5,13 @@ import { Component } from 'react';
 import { IconButton, Menu, MenuItem } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
+import { signOut } from '../../Authorization/actions';
+import { connect } from 'react-redux';
+
 class ProfileButton extends Component {
   state = {
     anchorEl: null,
+    loading: false,
   };
 
   render() {
@@ -45,9 +49,16 @@ class ProfileButton extends Component {
   };
 
   handleClick = () => {
+    const { signOut } = this.props;
+
+    this.setState({ loading: true });
+    signOut();
+    this.setState({
+      loading: false,
+    });
     this.handleClose();
   };
 
 }
 
-export default ProfileButton;
+export default connect(null, { signOut })(ProfileButton);

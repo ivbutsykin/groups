@@ -16,6 +16,17 @@ export async function login(email, password) {
   return token;
 }
 
+export async function register(email, name, password) {
+  const response = await fetch(`${API_URL}/users`, {
+    method: 'POST',
+    body: JSON.stringify({
+      email,
+      name,
+      password
+    })
+  });
+}
+
 export function logout() {
   sessionStorage.removeItem(STORAGE);
   return Promise.resolve();

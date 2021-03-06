@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 import { STORAGE } from '../api/auth.service';
-import { SIGN_IN, SIGN_OUT } from './types';
+import { SIGN_IN, SIGN_UP, SIGN_OUT } from './types';
 
 let token;
 let user;
@@ -29,6 +29,11 @@ export function authReducer(state = initialState, action) {
         token: action.payload.token,
         isLoggedIn: true,
       };
+
+    case SIGN_UP:
+      return {
+        ...state,
+      }
 
     case SIGN_OUT:
       return {
