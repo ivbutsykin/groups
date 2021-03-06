@@ -22,9 +22,15 @@ export function signIn(email, password) {
 
 export function signUp(email, name, password) {
   return async function (dispatch) {
-    await register(email, name, password);
+    const token = await register(email, name, password);
+    const user = jwt.decode(token);
+
     dispatch({
       type: SIGN_UP,
+      payload: {
+        token,
+        user
+      }
     });
   };
 }

@@ -23,8 +23,12 @@ export async function register(email, name, password) {
       email,
       name,
       password
-    })
+    }),
   });
+
+  const token = await response.text();
+  sessionStorage.setItem(STORAGE, token);
+  return token;
 }
 
 export function logout() {

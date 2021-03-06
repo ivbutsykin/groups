@@ -94,7 +94,7 @@ class SignUpForm extends Component {
     await signUp(email, username, password);
     this.setState({
       loading: false,
-      redirect: '/signin',
+      redirect: '/',
       // open: 'true',
     });
   };
